@@ -1,0 +1,36 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.image-item {
+  margin: 20px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+}
+
+.image-info {
+  margin-top: 10px;
+  text-align: center;
+}
+
+p {
+  margin-bottom: 5px;
+}

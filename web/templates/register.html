@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>注册</title>
+
+    <style>
+        /*body {*/
+        /*    background-image: url('/static/image/00191.jpg');*/
+        /*    background-repeat: no-repeat;*/
+        /*    background-size: cover;*/
+        /*    background-position: center;*/
+        /*    opacity: 0.99;*/
+        /*}*/
+        /* 其他自定义样式 */
+        .preview-image {
+            max-width: 400px;
+            max-height: 400px;
+        }
+
+        .custom-file-label::after {
+            content: "选择";
+        }
+
+        .custom-file-label::before {
+            content: "浏览";
+        }
+    </style>
+</head>
+<script src="/static/js/bootstrap.min.js"></script>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">小麦病害识别系统</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('index') }}">首页</a>
+            </li>
+        </ul>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('mail') }}">系统介绍</a>
+                </li>
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">小麦病害介绍</a>-->
+                <!--                </li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="diseasesDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        小麦病害介绍
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="diseasesDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('CrownAndRootRot') }}">小麦根冠腐烂</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('LeafRust') }}">小麦叶锈病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('PowderyMildew') }}">小麦白粉病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatAphids') }}">小麦蚜虫</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatCystNematode') }}">小麦囊包线虫病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatLooseSmut') }}">小麦散粉病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatRedSpider') }}">小麦红蜘蛛</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatScab') }}">小麦赤霉病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatSharpEyespot') }}">小麦茎基腐</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatStalkRot') }}">小麦纹枯病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatTake') }}">小麦全蚀病</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+    <h1>麦麦康系统注册</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+        <label for="username">用户名：</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">密    码：</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <label for="email">邮    箱:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <input type="submit" value="注册">
+    </form>
+    <p>已有账号? <a href="/login">登录</a></p>
+<!--<footer class="footer bg-dark text-white py-4 text-center">-->
+<!--    <div class="container text-center">-->
+<!--        <p>版权所有 &copy; 2023 基于深度学习的小麦病害识别系统</p>-->
+<!--        <a href="#" class="text-light" onclick="scrollToTop()">返回顶部</a>-->
+<!--    </div>-->
+<!--</footer>-->
+
+<script>
+    // 获取图片输入框和预览图片元素
+    const imageInput = document.getElementById('image-input');
+    const previewImage = document.getElementById('preview-image');
+
+    // 监听图片输入框的变化事件
+    imageInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+
+        // 创建一个文件读取器
+        const reader = new FileReader();
+
+        // 读取文件并将结果赋值给预览图片元素的 src 属性
+        reader.onload = function (e) {
+            previewImage.src = e.target.result;
+        };
+
+        // 读取文件
+        reader.readAsDataURL(file);
+    });
+
+    // 处理退出登录的逻辑
+    function logout() {
+        fetch('/logout', {
+            method: 'POST',
+            // 可以根据需要添加请求头或其他参数
+        })
+            .then(response => {
+                // 在这里处理响应结果
+                // 可以根据响应状态码或其他响应内容执行相应的操作
+                if (response.ok) {
+                    // 成功退出登录，跳转到首页
+                    window.location.href = '/';
+                } else {
+                    // 处理退出登录失败的情况
+                    console.error('Logout failed');
+                    // 跳转到登录页面
+                    window.location.href = '/login';
+                }
+            })
+            .catch(error => {
+                // 在这里处理错误情况
+                console.error('Logout error:', error);
+                // 跳转到登录页面
+                window.location.href = '/login';
+            });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // 初始化 Popper.js
+        var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+        var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+            return new bootstrap.Dropdown(dropdownToggleEl, {
+                popperConfig: {
+                    // 这里可以根据需要进行 Popper.js 的配置
+                }
+            })
+        });
+    });
+
+
+</script>
+
+
+</body>
+
+</html>

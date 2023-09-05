@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>小麦赤霉病病害介绍</title>
+
+    <style>
+        /*body {*/
+        /*    background-image: url('/static/image/00191.jpg');*/
+        /*    background-repeat: no-repeat;*/
+        /*    background-size: cover;*/
+        /*    background-position: center;*/
+        /*    opacity: 0.99;*/
+        /*}*/
+        /* 其他自定义样式 */
+        .preview-image {
+            max-width: 400px;
+            max-height: 400px;
+        }
+
+        .custom-file-label::after {
+            content: "选择";
+        }
+
+        .custom-file-label::before {
+            content: "浏览";
+        }
+    </style>
+</head>
+<script src="/static/js/bootstrap.min.js"></script>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">小麦病害识别系统</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('mail') }}">系统介绍</a>
+            </li>
+        </ul>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('system') }}">系统介绍</a>
+                </li>
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">小麦病害介绍</a>-->
+                <!--                </li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="diseasesDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        小麦病害介绍
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="diseasesDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('CrownAndRootRot') }}">小麦根冠腐烂</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('LeafRust') }}">小麦叶锈病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('PowderyMildew') }}">小麦白粉病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatAphids') }}">小麦蚜虫</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatCystNematode') }}">小麦囊包线虫病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatLooseSmut') }}">小麦散粉病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatRedSpider') }}">小麦红蜘蛛</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatScab') }}">小麦赤霉病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatSharpEyespot') }}">小麦茎基腐</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatStalkRot') }}">小麦纹枯病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatTake') }}">小麦全蚀病</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="container mt-4">
+        <h1>小麦赤霉病（Wheat Scab）</h1>
+        <div class="container">
+            <div class="row">
+                <!-- 预览区 -->
+                <div class="col-md-3">
+                    <div class="carousel-container d-flex justify-content-center align-items-center"
+                         style="width: 300px; height: 400px; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center;">
+                        <div id="carousel0" class="carousel slide" data-bs-ride="carousel"
+                             style="width: 100%; height: 100%;">
+                            <div class="carousel-inner">
+                                <!-- 轮播图项1 -->
+                                <div class="carousel-item active" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_2.jpg" class="d-block w-100" alt="轮播图1"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项2 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_19.jpg" class="d-block w-100" alt="轮播图2"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项3 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_32.jpg" class="d-block w-100" alt="轮播图3"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                            </div>
+                            <!-- 添加轮播图控制按钮 -->
+                            <a class="carousel-control-prev" href="#carousel0" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel0" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 病害轮播图展示区1 -->
+                <div class="col-md-3">
+                    <div class="carousel-container d-flex justify-content-center align-items-center"
+                         style="width: 300px; height: 400px; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center;">
+                        <div id="carousel1" class="carousel slide" data-bs-ride="carousel"
+                             style="width: 100%; height: 100%;">
+                            <div class="carousel-inner">
+                                <!-- 轮播图项1 -->
+                                <div class="carousel-item active" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_33.jpg" class="d-block w-100" alt="轮播图1"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项2 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_56.jpg" class="d-block w-100" alt="轮播图2"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项3 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_76.jpg" class="d-block w-100" alt="轮播图3"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                            </div>
+                            <!-- 添加轮播图控制按钮 -->
+                            <a class="carousel-control-prev" href="#carousel1" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel1" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 病害轮播图展示区2 -->
+                <div class="col-md-3">
+                    <div class="carousel-container d-flex justify-content-center align-items-center"
+                         style="width: 300px; height: 400px; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center;">
+                        <div id="carousel2" class="carousel slide" data-bs-ride="carousel"
+                             style="width: 100%; height: 100%;">
+                            <div class="carousel-inner">
+                                <!-- 轮播图项1 -->
+                                <div class="carousel-item active" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_86.jpg" class="d-block w-100" alt="轮播图1"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项2 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_89.jpg" class="d-block w-100" alt="轮播图2"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项3 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_159.jpg" class="d-block w-100" alt="轮播图3"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                            </div>
+                            <!-- 添加轮播图控制按钮 -->
+                            <a class="carousel-control-prev" href="#carousel2" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel2" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 病害轮播图展示区3 -->
+                <div class="col-md-3">
+                    <div class="carousel-container d-flex justify-content-center align-items-center"
+                         style="width: 300px; height: 400px; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center;">
+                        <div id="carousel3" class="carousel slide" data-bs-ride="carousel"
+                             style="width: 100%; height: 100%;">
+                            <div class="carousel-inner">
+                                <!-- 轮播图项1 -->
+                                <div class="carousel-item active" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_175.jpg" class="d-block w-100" alt="轮播图1"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项2 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_208.jpg" class="d-block w-100" alt="轮播图2"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项3 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatScab_306.jpg" class="d-block w-100" alt="轮播图3"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                            </div>
+                            <!-- 添加轮播图控制按钮 -->
+                            <a class="carousel-control-prev" href="#carousel3" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel3" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <p><strong>小麦赤霉病：</strong></p>
+        <p>苗腐：是由种子带菌或土壤中病残体侵染所致。先是芽变褐，然后根冠随之腐烂，轻者病苗黄瘿，重者死亡。</p>
+        <p>穗腐：小麦扬花时，初在颖片上产生水浸状浅褐色斑，后扩大至整个小穗，小穗枯黄。湿度大时，病斑处产生粉红色胶状霉层，后期其上产生密集的黑色小颗粒。用手触摸，有突起感觉，籽粒干瘪并伴有白色至粉红色霉层。</p>
+        <p>
+            茎基腐：幼苗出土至成熟均可发生，麦株基部组织受害后变褐腐烂，至全株枯死。秆腐：多发生在穗下第1、2节，初在叶鞘上出现水渍状褪绿斑，后扩展为淡褐色至红褐色不规则形斑或向茎内扩展。病情严重时，造成病部以上枯黄，有时不能抽穗或抽出枯黄穗。气候潮湿时病部表面可见粉红色霉层。</p>
+
+        <p><strong>病菌信息：</strong></p>
+        <p>病菌无性态属半知菌亚门禾谷镰刀菌，有性态属子囊菌亚门赤霉属玉蜀黍赤霉菌，为真菌性病害。从幼苗到抽穗都可受害，主要引起苗枯、茎基腐、秆腐和穗腐，其中为害最严重的是穗腐。</p>
+
+        <p><strong>防治措施：</strong></p>
+        <ol>
+            <li>选择抗病品种。</li>
+            <li>在小麦扬花期的时候，要少浇一些水，浇水太多也容易引发小麦赤霉病发生。</li>
+            <li>药剂处理：比较有效的是多菌灵和甲基硫菌灵等内吸杀菌剂。最适合喷药的时期是小麦的齐穗期至盛花期。</li>
+        </ol>
+    </div>
+</div>
+
+
+<footer class="footer bg-dark text-white py-4 text-center">
+    <div class="container text-center">
+        <p>版权所有 &copy; 2023 基于深度学习的小麦病害识别系统</p>
+        <a href="#" class="text-light" onclick="scrollToTop()">返回顶部</a>
+    </div>
+</footer>
+
+<script>
+    // 获取图片输入框和预览图片元素
+    const imageInput = document.getElementById('image-input');
+    const previewImage = document.getElementById('preview-image');
+
+    // 监听图片输入框的变化事件
+    imageInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+
+        // 创建一个文件读取器
+        const reader = new FileReader();
+
+        // 读取文件并将结果赋值给预览图片元素的 src 属性
+        reader.onload = function (e) {
+            previewImage.src = e.target.result;
+        };
+
+        // 读取文件
+        reader.readAsDataURL(file);
+    });
+
+    // 处理退出登录的逻辑
+    function logout() {
+        fetch('/logout', {
+            method: 'POST',
+            // 可以根据需要添加请求头或其他参数
+        })
+            .then(response => {
+                // 在这里处理响应结果
+                // 可以根据响应状态码或其他响应内容执行相应的操作
+                if (response.ok) {
+                    // 成功退出登录，跳转到首页
+                    window.location.href = '/';
+                } else {
+                    // 处理退出登录失败的情况
+                    console.error('Logout failed');
+                    // 跳转到登录页面
+                    window.location.href = '/login';
+                }
+            })
+            .catch(error => {
+                // 在这里处理错误情况
+                console.error('Logout error:', error);
+                // 跳转到登录页面
+                window.location.href = '/login';
+            });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // 初始化 Popper.js
+        var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+        var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+            return new bootstrap.Dropdown(dropdownToggleEl, {
+                popperConfig: {
+                    // 这里可以根据需要进行 Popper.js 的配置
+                }
+            })
+        });
+    });
+
+
+</script>
+<script>
+    // 返回顶部的函数
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // 平滑滚动
+        });
+    }
+</script>
+
+</body>
+
+</html>

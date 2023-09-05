@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/js/bootstrap.bundle.min.js"></script>
+        <meta charset="UTF-8">
+        <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <title>小麦纹枯病病害介绍</title>
+
+        <style>
+            /*body {*/
+            /*    background-image: url('/static/image/00191.jpg');*/
+            /*    background-repeat: no-repeat;*/
+            /*    background-size: cover;*/
+            /*    background-position: center;*/
+            /*    opacity: 0.99;*/
+            /*}*/
+            /* 其他自定义样式 */
+            .preview-image {
+                max-width: 400px;
+                max-height: 400px;
+            }
+
+            .custom-file-label::after {
+                content: "选择";
+            }
+
+            .custom-file-label::before {
+                content: "浏览";
+            }
+        </style>
+    </head>
+    <script src="/static/js/bootstrap.min.js"></script>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">小麦病害识别系统</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('mail') }}">系统介绍</a>
+            </li>
+        </ul>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('system') }}">系统介绍</a>
+                </li>
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">小麦病害介绍</a>-->
+                <!--                </li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="diseasesDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        小麦病害介绍
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="diseasesDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('CrownAndRootRot') }}">小麦根冠腐烂</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('LeafRust') }}">小麦叶锈病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('PowderyMildew') }}">小麦白粉病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatAphids') }}">小麦蚜虫</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatCystNematode') }}">小麦囊包线虫病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatLooseSmut') }}">小麦散粉病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatRedSpider') }}">小麦红蜘蛛</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatScab') }}">小麦赤霉病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatSharpEyespot') }}">小麦茎基腐</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatStalkRot') }}">小麦纹枯病</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('WheatTake') }}">小麦全蚀病</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="container mt-4">
+        <h1>小麦纹枯病（wheat sharp eyespot）</h1>
+        <div class="container">
+            <div class="row">
+                <!-- 预览区 -->
+                <div class="col-md-3">
+                    <div class="carousel-container d-flex justify-content-center align-items-center"
+                         style="width: 300px; height: 400px; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center;">
+                        <div id="carousel0" class="carousel slide" data-bs-ride="carousel"
+                             style="width: 100%; height: 100%;">
+                            <div class="carousel-inner">
+                                <!-- 轮播图项1 -->
+                                <div class="carousel-item active" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_4.jpg" class="d-block w-100" alt="轮播图1"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项2 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_20.jpg" class="d-block w-100" alt="轮播图2"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项3 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_67.jpg" class="d-block w-100" alt="轮播图3"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                            </div>
+                            <!-- 添加轮播图控制按钮 -->
+                            <a class="carousel-control-prev" href="#carousel0" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel0" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 病害轮播图展示区1 -->
+                <div class="col-md-3">
+                    <div class="carousel-container d-flex justify-content-center align-items-center"
+                         style="width: 300px; height: 400px; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center;">
+                        <div id="carousel1" class="carousel slide" data-bs-ride="carousel"
+                             style="width: 100%; height: 100%;">
+                            <div class="carousel-inner">
+                                <!-- 轮播图项1 -->
+                                <div class="carousel-item active" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_132.jpg" class="d-block w-100" alt="轮播图1"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项2 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_138.jpg" class="d-block w-100" alt="轮播图2"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项3 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_144.jpg" class="d-block w-100" alt="轮播图3"
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+                            </div>
+                            <!-- 添加轮播图控制按钮 -->
+                            <a class="carousel-control-prev" href="#carousel1" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel1" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 病害轮播图展示区2 -->
+                <div class="col-md-3">
+                    <div class="carousel-container d-flex justify-content-center align-items-center"
+                         style="width: 300px; height: 400px; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center;">
+                        <div id="carousel2" class="carousel slide" data-bs-ride="carousel"
+                             style="width: 100%; height: 100%;">
+                            <div class="carousel-inner">
+                                <!-- 轮播图项1 -->
+                                <div class="carousel-item active" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_158.jpg" class="d-block w-100" alt="轮播图1"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项2 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_165.jpg" class="d-block w-100" alt="轮播图2"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项3 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_169.jpg" class="d-block w-100" alt="轮播图3"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                            </div>
+                            <!-- 添加轮播图控制按钮 -->
+                            <a class="carousel-control-prev" href="#carousel2" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel2" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 病害轮播图展示区3 -->
+                <div class="col-md-3">
+                    <div class="carousel-container d-flex justify-content-center align-items-center"
+                         style="width: 300px; height: 400px; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center;">
+                        <div id="carousel3" class="carousel slide" data-bs-ride="carousel"
+                             style="width: 100%; height: 100%;">
+                            <div class="carousel-inner">
+                                <!-- 轮播图项1 -->
+                                <div class="carousel-item active" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_221.jpg" class="d-block w-100" alt="轮播图1"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项2 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_296.jpg" class="d-block w-100" alt="轮播图2"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                                <!-- 轮播图项3 -->
+                                <div class="carousel-item" style="position: relative; overflow: hidden;">
+                                    <img src="/static/image/WheatSharpEyespot_411.jpg" class="d-block w-100" alt="轮播图3"
+                                         style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                            </div>
+                            <!-- 添加轮播图控制按钮 -->
+                            <a class="carousel-control-prev" href="#carousel3" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel3" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>病害描述</h2>
+        <ul>
+            <li>雪霉叶枯（又称雪腐叶枯）：叶上病斑较大，暗绿色，水浸状，近圆形或椭圆形。病斑中央黄白色，常有不明显的轮纹和粉色霉层。后期病叶枯死。在穗上引起小穗轴变褐色腐烂，形成赤霉病。</li>
+            <li>黄斑叶枯：叶上病斑大小次于雪腐叶枯病，黄褐色，椭圆形或纺锤形。病斑中部黑褐色，上有不明显同心轮纹和黑色霉层。边缘有黄色晕圈。后期病斑愈合，叶片枯死。</li>
+            <li>
+                壳针孢叶枯（小麦斑枯病）：主要为害叶片、叶鞘，也为害茎部和穗部。感病叶片初在叶脉间出现淡绿至黄色纺锤形病斑，后扩展连片形成褐白色大斑，上生黑色小粒点（分生孢子器）。有时病叶仅叶尖发病干枯，有时病叶很快变黄，下垂。病斑有时从叶鞘向茎秆扩展，并侵染穗部颖壳，使之变得干枯。
+            </li>
+            <li>交孢叶枯：叶上病斑小型、卵圆形、梭形、不规则形，初期淡黄色，后变黄褐色。气候潮湿时病斑上生浓厚黑色霉层，即病原菌的分生孢子梗和分生孢子。病斑愈合后，叶片枯死。</li>
+        </ul>
+
+        <h2>防治措施</h2>
+        <ul>
+            <li>控制灌水，雨后还要及时排水。小麦扬花期至灌浆期是防治叶枯病的关键时期。</li>
+            <li>种子处理：用福美双或三唑酮·多菌灵双进行拌种，预防病害。</li>
+            <li>
+                在小麦扬花至灌浆期，田间开始发病时，可选用以下杀菌剂进行预防和防治：百菌清＋烯唑醇、三唑酮、甲基硫菌灵、氟硅唑、异菌脲等。防治小麦纹枯病的关键是在小麦拔节前后、纹枯病初发时使用药剂。药剂选择可包括：井冈霉素、噻呋酰胺、苯甲·丙环唑等三唑类药剂。
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+
+<footer class="footer bg-dark text-white py-4 text-center">
+    <div class="container text-center">
+        <p>版权所有 &copy; 2023 基于深度学习的小麦病害识别系统</p>
+        <a href="#" class="text-light" onclick="scrollToTop()">返回顶部</a>
+    </div>
+</footer>
+
+<script>
+    // 获取图片输入框和预览图片元素
+    const imageInput = document.getElementById('image-input');
+    const previewImage = document.getElementById('preview-image');
+
+    // 监听图片输入框的变化事件
+    imageInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+
+        // 创建一个文件读取器
+        const reader = new FileReader();
+
+        // 读取文件并将结果赋值给预览图片元素的 src 属性
+        reader.onload = function (e) {
+            previewImage.src = e.target.result;
+        };
+
+        // 读取文件
+        reader.readAsDataURL(file);
+    });
+
+    // 处理退出登录的逻辑
+    function logout() {
+        fetch('/logout', {
+            method: 'POST',
+            // 可以根据需要添加请求头或其他参数
+        })
+            .then(response => {
+                // 在这里处理响应结果
+                // 可以根据响应状态码或其他响应内容执行相应的操作
+                if (response.ok) {
+                    // 成功退出登录，跳转到首页
+                    window.location.href = '/';
+                } else {
+                    // 处理退出登录失败的情况
+                    console.error('Logout failed');
+                    // 跳转到登录页面
+                    window.location.href = '/login';
+                }
+            })
+            .catch(error => {
+                // 在这里处理错误情况
+                console.error('Logout error:', error);
+                // 跳转到登录页面
+                window.location.href = '/login';
+            });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // 初始化 Popper.js
+        var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+        var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+            return new bootstrap.Dropdown(dropdownToggleEl, {
+                popperConfig: {
+                    // 这里可以根据需要进行 Popper.js 的配置
+                }
+            })
+        });
+    });
+
+
+</script>
+<script>
+    // 返回顶部的函数
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // 平滑滚动
+        });
+    }
+</script>
+
+</body>
+
+</html>
